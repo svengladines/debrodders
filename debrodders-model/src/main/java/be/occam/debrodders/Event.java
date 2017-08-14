@@ -12,6 +12,17 @@ public class Event<P,S> {
 	protected P primary;
 	protected S secondary;
 	
+	public Event( String type, P p ) {
+		this.type = type;
+		this.primary = p;
+	}
+	
+	public Event( String type, P p,S s ) {
+		this.type = type;
+		this.primary = p;
+		this.secondary = s;
+	}
+	
 	public String getUuid() {
 		return uuid;
 	}

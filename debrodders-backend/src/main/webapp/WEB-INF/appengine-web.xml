@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<appengine-web-app xmlns="http://appengine.google.com/ns/1.0">
+  <application>minimaxi-backend</application>
+  <version>1</version>
+  <threadsafe>true</threadsafe>
+  <system-properties>
+  	<property name="spring.profiles.active" value="production" />
+  	<property name="ftp.user" value="debrodders.be" />
+  	<property name="ftp.password" value="debrodders2230" />
+  </system-properties>
+</appengine-web-app>

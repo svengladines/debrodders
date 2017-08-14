@@ -1,0 +1,41 @@
+<p>
+Beste ACSI-medewerker,
+</p>
+
+<p>
+${entry.name} meldde zich zonet aan via het webformulier.
+</p>
+
+<h2>Algemene gegevens</h2>
+<p>
+	<ul>
+		<li>Naam: ${entry.name}</li>
+		<li>E-mail: ${entry.email}</li>
+		<li>Telefoon: ${entry.telephone}</li>
+		<li>Geboortedatum: ${entry.birthDay?date}</li>
+	</ul>
+</p>
+
+<h2>Therapie</h2>
+<p>
+	${entry.therapy.description}
+</p>
+
+<h2>Hulpvraag</h4>
+<h3>${entry.subject}</h3>
+<p>
+   ${entry.description}
+</p>
+
+<h2>Beschikbaarheid</h2>
+<p>
+   ${entry.availability}
+</p>
+
+<br/>
+<br/>
+
+<p>
+Met vriendelijke groet,<br/>
+ACSI Digitaal.
+</p>
