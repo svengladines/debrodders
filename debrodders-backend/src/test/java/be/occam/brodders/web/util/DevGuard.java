@@ -1,4 +1,4 @@
-package be.occam.minimaxi.web.util;
+package be.occam.brodders.web.util;
 
 import com.google.apphosting.api.ApiProxy;
 import com.google.apphosting.api.ApiProxy.Environment;

@@ -1,4 +1,4 @@
-package be.occam.minimaxi.utests;
+package be.occam.brodders.utests;
 
 import org.junit.Test;
 

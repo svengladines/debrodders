@@ -1,4 +1,4 @@
-package be.occam.minimaxi.application.run;
+package be.occam.brodders.application.run;
 
 import org.junit.Test;
 

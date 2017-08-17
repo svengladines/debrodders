@@ -1,4 +1,4 @@
-package be.occam.minimaxi.application.config;
+package be.occam.brodders.application.config;
 
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.spi.PersistenceProvider;
@@ -14,8 +14,8 @@ import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
+import be.occam.brodders.web.util.DevGuard;
 import be.occam.debrodders.web.util.DataGuard;
-import be.occam.minimaxi.web.util.DevGuard;
 import be.occam.utils.spring.configuration.ConfigurationProfiles;
 
 import com.google.appengine.tools.development.testing.LocalAppIdentityServiceTestConfig;

@@ -34,23 +34,9 @@ public class MvcConfig {
 	public static class ControllerConfig {
 		
 		@Bean
-		public EventsController entriesController() {
+		public EventsController eventsController() {
 			
 			return new EventsController();
-			
-		}
-		
-		@Bean
-		public AdventuresController adventuresController() {
-			
-			return new AdventuresController();
-			
-		}
-		
-		@Bean
-		public AdventureController adventureController() {
-			
-			return new AdventureController();
 			
 		}
 		
