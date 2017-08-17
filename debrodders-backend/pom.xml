@@ -1,0 +1,81 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  	<modelVersion>4.0.0</modelVersion>
+	
+ 	<groupId>be.occam.debrodders</groupId>
+ 	<artifactId>debrodders-backend</artifactId>
+  	<version>1.0-LATEST-SNAPSHOT</version>
+  	<packaging>war</packaging>
+  	<name>debrodders-backend</name>
+  	<description>debrodders-backend</description>
+	<parent>
+		<artifactId>colloseum-parent-pom</artifactId>
+		<groupId>be.occam.colloseum</groupId>
+		<version>1.0-LATEST-SNAPSHOT</version>
+	</parent>
+	
+	<dependencies>
+	
+		<dependency>
+			<type>jar</type>
+			<groupId>be.occam.debrodders</groupId>
+			<artifactId>debrodders-model</artifactId>
+			<version>1.0-LATEST-SNAPSHOT</version>
+		</dependency>
+	
+		<dependency>
+			<type>jar</type>
+			<groupId>be.occam</groupId>
+			<artifactId>occam-utils</artifactId>
+			<version>1.0-LATEST-SNAPSHOT</version>
+		</dependency>
+	
+		<dependency>
+			<groupId>jstl</groupId>
+ 			<artifactId>jstl</artifactId>
+  			<version>1.2</version>
+  			<scope>runtime</scope>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context-support</artifactId>
+			<version>${org.springframework.version}</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>be.occam.colloseum</groupId>
+			<artifactId>colloseum-appengine</artifactId>
+			<version>1.0-LATEST-SNAPSHOT</version>
+			<scope>compile</scope>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.freemarker</groupId>
+			<artifactId>freemarker</artifactId>
+			<version>2.3.15</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>be.occam.test</groupId>
+			<artifactId>occam-jtest</artifactId>
+			<version>1.0-LATEST-SNAPSHOT</version>
+			<scope>test</scope>
+		</dependency>
+		
+		<dependency>
+			<groupId>com.google.appengine</groupId>
+			<artifactId>appengine-testing</artifactId>
+			<version>1.9.36</version>
+			<scope>test</scope>
+		</dependency>
+		
+		<dependency>
+			<groupId>com.google.appengine</groupId>
+			<artifactId>appengine-api-stubs</artifactId>
+			<version>1.9.36</version>
+			<scope>test</scope>
+		</dependency>
+
+	</dependencies>
+
+</project>
