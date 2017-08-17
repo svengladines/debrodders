@@ -1,91 +1,83 @@
 package be.occam.debrodders.web.dto;
 
-import java.util.List;
+import java.util.Date;
+
+import be.occam.debrodders.match.MatchStatus;
+import be.occam.debrodders.match.MatchStatus.Status;
 
 public class MatchStatusDTO {
 	
-	protected int minute;
-	protected TeamDTO brodders;
-	protected TeamDTO opponent;
-	protected int brodderScore;
-	protected int opponentScore;
-	protected boolean homeGame;
-	protected boolean inProgress;
+	protected String uuid;
+	protected String matchUuid;
+	protected Status status;
+	protected int homeGoals;
+	protected int visitorGoals;
+	protected int minutes;
+	protected Date lastWhistle;
 	
-	protected List<EventDTO> brodderEvents;
-	protected List<EventDTO> opponentEvents;
-	
-	public int getMinute() {
-		return minute;
+	public String getUuid() {
+		return uuid;
+	}
+	public void setUuid(String uuid) {
+		this.uuid = uuid;
+	}
+	public Status getStatus() {
+		return status;
+	}
+	public void setStatus(Status status) {
+		this.status = status;
+	}
+	public int getHomeGoals() {
+		return homeGoals;
+	}
+	public void setHomeGoals(int homeGoals) {
+		this.homeGoals = homeGoals;
+	}
+	public int getVisitorGoals() {
+		return visitorGoals;
+	}
+	public void setVisitorGoals(int visitorGoals) {
+		this.visitorGoals = visitorGoals;
+	}
+	public int getMinutes() {
+		return minutes;
+	}
+	public void setMinutes(int minutes) {
+		this.minutes = minutes;
+	}
+	public String getMatchUuid() {
+		return matchUuid;
+	}
+	public void setMatchUuid(String matchUuid) {
+		this.matchUuid = matchUuid;
+	}
+	public Date getLastWhistle() {
+		return lastWhistle;
+	}
+	public void setLastWhistle(Date lastWhistle) {
+		this.lastWhistle = lastWhistle;
 	}
 	
-	public void setMinute(int minute) {
-		this.minute = minute;
+	public static MatchStatusDTO dto( MatchStatus f ) {
+		
+		MatchStatusDTO t
+			= new MatchStatusDTO();
+		t.setStatus( f.getStatus() );
+		t.setMinutes( f.getMinutes() );
+		
+		return t;
+		
 	}
 	
-	public TeamDTO getBrodders() {
-		return brodders;
+	public static MatchStatus status( MatchStatusDTO f ) {
+		
+		MatchStatus t
+			= new MatchStatus();
+		t.setStatus( f.getStatus() );
+		t.setMinutes( f.getMinutes() );
+		
+		return t;
+		
 	}
 	
-	public void setBrodders(TeamDTO brodders) {
-		this.brodders = brodders;
-	}
-	
-	public TeamDTO getOpponent() {
-		return opponent;
-	}
-	
-	public void setOpponent(TeamDTO opponent) {
-		this.opponent = opponent;
-	}
-	
-	public int getBrodderScore() {
-		return brodderScore;
-	}
-	
-	public void setBrodderScore(int brodderScore) {
-		this.brodderScore = brodderScore;
-	}
-	
-	public int getOpponentScore() {
-		return opponentScore;
-	}
-	
-	public void setOpponentScore(int opponentScore) {
-		this.opponentScore = opponentScore;
-	}
-	
-	public boolean isHomeGame() {
-		return homeGame;
-	}
-	
-	public void setHomeGame(boolean homeGame) {
-		this.homeGame = homeGame;
-	}
-	
-	public List<EventDTO> getBrodderEvents() {
-		return brodderEvents;
-	}
-	
-	public void setBrodderEvents(List<EventDTO> brodderEvents) {
-		this.brodderEvents = brodderEvents;
-	}
-	
-	public List<EventDTO> getOpponentEvents() {
-		return opponentEvents;
-	}
-	
-	public void setOpponentEvents(List<EventDTO> opponentEvents) {
-		this.opponentEvents = opponentEvents;
-	}
-
-	public boolean isInProgress() {
-		return inProgress;
-	}
-
-	public void setInProgress(boolean inProgress) {
-		this.inProgress = inProgress;
-	}
-	
-
 }
