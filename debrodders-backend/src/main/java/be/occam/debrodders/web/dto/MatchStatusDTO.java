@@ -7,6 +7,8 @@ import be.occam.debrodders.match.MatchStatus.Status;
 
 public class MatchStatusDTO {
 	
+	protected TeamDTO homeTeam;
+	protected TeamDTO visitorTeam; 
 	protected String uuid;
 	protected String matchUuid;
 	protected Status status;

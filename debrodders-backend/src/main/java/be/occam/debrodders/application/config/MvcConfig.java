@@ -8,8 +8,6 @@ import org.springframework.web.multipart.MultipartResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
-import be.occam.debrodders.web.controller.api.AdventureController;
-import be.occam.debrodders.web.controller.api.AdventuresController;
 import be.occam.debrodders.web.controller.api.EventsController;
 
 @Configuration
