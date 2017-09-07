@@ -6,12 +6,14 @@ var renderMatchStatus = function( matchStatus ) {
     $jq("#homeGoals").html( matchStatus.homeGoals );
     $jq("#visitorTeamName").html( matchStatus.visitorTeam.name );
     $jq("#visitorGoals").html( matchStatus.visitorGoals );
+    $jq("#status").html( matchStatus.status );
+    $jq("#announcement").html( matchStatus.announcement );
 
 };
 
 var loadMatchStatus = function() {
 
-    $jq.getJSON( "http://www.debrodders.be/svekke/match-status.json", { format: "json", x:"y" })
+    $jq.getJSON( "http://www.debrodders.be/svekke/debrodders-board.json", { format: "json", x:"y" })
 	    .done(function( matchStatus ) {
 			renderMatchStatus( matchStatus);
 		})

@@ -7,8 +7,8 @@
 	<packaging>jar</packaging>
 
 	<parent>
-		<artifactId>colloseum-parent-pom</artifactId>
-		<groupId>be.occam.colloseum</groupId>
+		<artifactId>occam-base-pom</artifactId>
+		<groupId>be.occam</groupId>
 		<version>1.0-LATEST-SNAPSHOT</version>
 	</parent>
 	
@@ -28,12 +28,6 @@
 			<groupId>be.occam</groupId>
 			<artifactId>occam-utils</artifactId>
 			<version>1.0-LATEST-SNAPSHOT</version>
-		</dependency>
-		<dependency>
-			<groupId>be.occam.colloseum</groupId>
-			<artifactId>colloseum-appengine</artifactId>
-			<version>1.0-LATEST-SNAPSHOT</version>
-			<scope>compile</scope>
 		</dependency>
 	</dependencies>
 
