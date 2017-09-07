@@ -6,12 +6,14 @@ import be.occam.test.jtest.JTest;
 
 public class TestMatchStatusUpdates extends JTest {
 	
-	public TestMatchStatusUpdates(String context) {
-		super(context);
+	public TestMatchStatusUpdates() {
+		super("/debrodders-backend");
 	}
 
 	@Test
 	public void doesItSmoke() {
+		
+		
 		
 	}
 

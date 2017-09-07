@@ -26,7 +26,8 @@ public class MatchStatusKeeper extends EventConsumer {
 	
 	@Override
 	public void consume( Event<String,String> event ) {
-		
+
+		/*
 		if ( Events.Referee.EVENT_WHISTLES.equals( event.getType() ) ) {
 			
 			SimpleEvent<Match> e
@@ -80,6 +81,7 @@ public class MatchStatusKeeper extends EventConsumer {
 			matchStatus.setMinutes( this.minutes( matchStatus, now ) );
 			
 		}
+		*/
 		
 	}
 	

@@ -1,6 +1,5 @@
 package be.occam.debrodders.application.config;
 
-import org.gmr.web.multipart.GMultipartResolver;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.format.datetime.DateFormatter;
@@ -55,7 +54,8 @@ public class MvcConfig {
 			
 		}
 	}
-	
+
+	/*
 	@Bean
 	MultipartResolver multipartResolver() {
 		
@@ -65,6 +65,6 @@ public class MvcConfig {
 		return resolver;
 		
 	}
-		
-
+	*/
+	
 }

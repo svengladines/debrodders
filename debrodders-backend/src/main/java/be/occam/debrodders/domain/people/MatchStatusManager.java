@@ -1,27 +1,46 @@
 package be.occam.debrodders.domain.people;
 
-import java.util.UUID;
-
 import javax.annotation.Resource;
 
-import be.occam.debrodders.Match;
+import org.codehaus.jackson.map.ObjectMapper;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import be.occam.debrodders.match.MatchStatus;
-import be.occam.debrodders.match.MatchStatus.Status;
+import be.occam.utils.one.OneDotComClient;
 
 public class MatchStatusManager {
+	
+	protected final Logger logger
+		= LoggerFactory.getLogger( this.getClass() );
 	
 	@Resource
 	Popper popper;
 	
-	public MatchStatus create( String matchUuid ) {
+	@Resource
+	ObjectMapper objectMapper;
+	
+	@Resource
+	OneDotComClient oneDotComClient;
+	
+	public MatchStatus update( MatchStatus matchStatus ) {
 		
-		MatchStatus status
-			= new MatchStatus();
+		try {
+			
+			String json
+				= this.objectMapper.writeValueAsString( matchStatus );
+			
+			String path
+				= "/svekke/match-status.json";
+			
+			this.oneDotComClient.store( path, json );
+			
+		}
+		catch( Exception e ) {
+			logger.warn( "failed to store json", e );
+		}
 		
-		status.setUuid( UUID.randomUUID().toString() );
-		status.setMatchUuid( matchUuid );
-		status.setStatus( Status.TO_BE_STARTED );
-		return status;
+		return matchStatus;
 		
 	}
 	
