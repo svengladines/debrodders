@@ -2,12 +2,16 @@ package be.occam.debrodders.match;
 
 import java.util.Date;
 
+import be.occam.debrodders.Team;
+
 public class MatchStatus {
 	
 	public static enum Status {
 		NOT_YET_STARTED, FIRST_HALF, INTERMISSION, SECOND_HALF, FINISHED
 	};
 	
+	protected Team homeTeam;
+	protected Team visitorTeam;
 	protected String uuid;
 	protected String matchUuid;
 	protected Status status;
@@ -58,5 +62,18 @@ public class MatchStatus {
 	public void setLastWhistle(Date lastWhistle) {
 		this.lastWhistle = lastWhistle;
 	}
+	public Team getHomeTeam() {
+		return homeTeam;
+	}
+	public void setHomeTeam(Team homeTeam) {
+		this.homeTeam = homeTeam;
+	}
+	public Team getVisitorTeam() {
+		return visitorTeam;
+	}
+	public void setVisitorTeam(Team visitorTeam) {
+		this.visitorTeam = visitorTeam;
+	}
+	
 	
 }

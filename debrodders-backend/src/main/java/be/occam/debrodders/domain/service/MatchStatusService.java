@@ -33,16 +33,11 @@ public class MatchStatusService {
 	public ResponseEntity<MatchStatusDTO> consume( MatchStatusDTO matchStatusDTO ) {
 		
 		logger.debug( "consume [{}]", matchStatusDTO );
-		
-		MatchStatus matchStatus
-			= this.matchStatusManager.findOneByUuid( "x" );
-		
-		if ( matchStatus == null ) {
-			matchStatus = MatchStatusDTO.status( matchStatusDTO );
+
+		MatchStatus matchStatus 
+			= MatchStatusDTO.status( matchStatusDTO );
 			
-			matchStatus = matchStatusManager.update( matchStatus );
-		}
-		
+		matchStatus = matchStatusManager.update( matchStatus );
 		
 		return response( matchStatusDTO, HttpStatus.OK );
 			

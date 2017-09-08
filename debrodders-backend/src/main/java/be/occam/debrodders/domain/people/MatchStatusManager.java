@@ -15,9 +15,6 @@ public class MatchStatusManager {
 		= LoggerFactory.getLogger( this.getClass() );
 	
 	@Resource
-	Popper popper;
-	
-	@Resource
 	ObjectMapper objectMapper;
 	
 	@Resource
@@ -44,6 +41,7 @@ public class MatchStatusManager {
 		
 	}
 	
+	/*
 	public MatchStatus findOneByUuid( String uuid ) {
 		
 		MatchStatus status
@@ -61,5 +59,6 @@ public class MatchStatusManager {
 		return status;
 		
 	}
+	*/
 	
 }

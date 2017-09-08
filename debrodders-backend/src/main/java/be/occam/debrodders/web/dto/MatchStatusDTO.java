@@ -2,6 +2,7 @@ package be.occam.debrodders.web.dto;
 
 import java.util.Date;
 
+import be.occam.debrodders.Team;
 import be.occam.debrodders.match.MatchStatus;
 import be.occam.debrodders.match.MatchStatus.Status;
 
@@ -60,6 +61,20 @@ public class MatchStatusDTO {
 		this.lastWhistle = lastWhistle;
 	}
 	
+	public TeamDTO getHomeTeam() {
+		return homeTeam;
+	}
+	public MatchStatusDTO setHomeTeam(TeamDTO homeTeam) {
+		this.homeTeam = homeTeam;
+		return this;
+	}
+	public TeamDTO getVisitorTeam() {
+		return visitorTeam;
+	}
+	public MatchStatusDTO setVisitorTeam(TeamDTO visitorTeam) {
+		this.visitorTeam = visitorTeam;
+		return this;
+	}
 	public static MatchStatusDTO dto( MatchStatus f ) {
 		
 		MatchStatusDTO t
@@ -75,8 +90,21 @@ public class MatchStatusDTO {
 		
 		MatchStatus t
 			= new MatchStatus();
+		
 		t.setStatus( f.getStatus() );
 		t.setMinutes( f.getMinutes() );
+		t.setHomeGoals( f.getHomeGoals() );
+		t.setVisitorGoals( f.getVisitorGoals() );
+		
+		Team homeTeam
+			= TeamDTO.team( f.getHomeTeam() );
+		
+		t.setHomeTeam( homeTeam );
+		
+		Team visitorTeam
+			= TeamDTO.team( f.getVisitorTeam() );
+	
+		t.setVisitorTeam( visitorTeam );
 		
 		return t;
 		

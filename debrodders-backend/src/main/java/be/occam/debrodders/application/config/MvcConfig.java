@@ -8,6 +8,7 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
 import be.occam.debrodders.web.controller.api.EventsController;
+import be.occam.debrodders.web.controller.api.MatchStatusesController;
 
 @Configuration
 @EnableWebMvc
@@ -30,10 +31,19 @@ public class MvcConfig {
 	@Configuration
 	public static class ControllerConfig {
 		
+		/*
 		@Bean
 		public EventsController eventsController() {
 			
 			return new EventsController();
+			
+		}
+		*/
+		
+		@Bean
+		public MatchStatusesController matchStatusesController() {
+			
+			return new MatchStatusesController();
 			
 		}
 		
