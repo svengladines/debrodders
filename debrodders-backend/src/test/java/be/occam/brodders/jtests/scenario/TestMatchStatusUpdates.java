@@ -27,16 +27,16 @@ public class TestMatchStatusUpdates extends JTest {
 		MatchStatusDTO status
 			= new MatchStatusDTO();
 		
-		TeamDTO astra
-			= new TeamDTO( ).setName( "Astra Begijnendijk" );
+		TeamDTO home
+			= new TeamDTO( ).setName( "VV Rotselaar" );
 		
-		TeamDTO brodders
+		TeamDTO visitor
 			= new TeamDTO().setName( "De Brodders" );
 		
-		status.setHomeTeam( astra );
-		status.setVisitorTeam( brodders );
-		status.setHomeGoals( 3 );
-		status.setVisitorGoals( 4 );
+		status.setHomeTeam( home );
+		status.setVisitorTeam( visitor );
+		status.setHomeGoals( 0 );
+		status.setVisitorGoals( 0 );
 		
 		ResponseEntity<MatchStatusDTO> postResponse
 			= postJSON( url, status );
