@@ -1,0 +1,55 @@
+	<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>be.occam.debrodders</groupId>
+	<artifactId>debrodders-frontend</artifactId>
+	<version>1.0-LATEST-SNAPSHOT</version>
+	<packaging>pom</packaging>
+
+	<parent>
+		<artifactId>occam-base-pom</artifactId>
+		<groupId>be.occam</groupId>
+		<version>1.0-LATEST-SNAPSHOT</version>
+	</parent>
+	
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	</properties>
+
+	<build>
+		 <extensions>
+      		<extension>
+    			<groupId>org.apache.maven.wagon</groupId>
+    			<artifactId>wagon-ftp</artifactId>
+    			<version>3.0.0</version>
+			</extension>
+		</extensions>
+		<plugins>
+			<plugin>
+	    		<groupId>org.codehaus.mojo</groupId>
+	    		<artifactId>wagon-maven-plugin</artifactId>
+	    		<version>1.0</version>
+	    		<executions>
+	    			<execution>
+	    				<id>upload-to-one-dot-com</id>
+	    				<phase>install</phase>
+	    				<goals>
+	    					<goal>upload</goal>
+	    				</goals>
+	    				<configuration>
+	    					<fromDir>${project.dir}</fromDir>
+	    					<toDir>/</toDir>
+	    					<includes>
+	    						*/*
+	    					</includes>
+	    					<url>ftp://ftp.debrodders.be</url>
+	    					<serverId>ftp-debrodders</serverId>
+	    				</configuration>
+	    			</execution>
+	    		
+	    		</executions>
+			</plugin>
+		</plugins>
+	</build>
+</project>
+

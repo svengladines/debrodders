@@ -13,7 +13,7 @@ var renderMatchStatus = function( matchStatus ) {
 
 var loadMatchStatus = function() {
 
-    $jq.getJSON( "http://www.debrodders.be/svekke/debrodders-board.json", { format: "json", x:"y" })
+    $jq.getJSON( "http://www.debrodders.be/svekke/match-status.json", { format: "json", x:"y" })
 	    .done(function( matchStatus ) {
 			renderMatchStatus( matchStatus);
 		})
