@@ -17,6 +17,7 @@ public class MatchStatusDTO {
 	protected int visitorGoals;
 	protected int minutes;
 	protected Date lastWhistle;
+	protected String announcement;
 	
 	public String getUuid() {
 		return uuid;
@@ -71,14 +72,25 @@ public class MatchStatusDTO {
 	public TeamDTO getVisitorTeam() {
 		return visitorTeam;
 	}
+	
 	public MatchStatusDTO setVisitorTeam(TeamDTO visitorTeam) {
 		this.visitorTeam = visitorTeam;
 		return this;
 	}
+	
+	public String getAnnouncement() {
+		return announcement;
+	}
+	public MatchStatusDTO setAnnouncement(String announcement) {
+		this.announcement = announcement;
+		return this;
+	}
+	
 	public static MatchStatusDTO dto( MatchStatus f ) {
 		
 		MatchStatusDTO t
 			= new MatchStatusDTO();
+		
 		t.setStatus( f.getStatus() );
 		t.setMinutes( f.getMinutes() );
 		
@@ -105,6 +117,8 @@ public class MatchStatusDTO {
 			= TeamDTO.team( f.getVisitorTeam() );
 	
 		t.setVisitorTeam( visitorTeam );
+		t.setAnnouncement( f.getAnnouncement() );
+		t.setStatus( f.getStatus() );
 		
 		return t;
 		
