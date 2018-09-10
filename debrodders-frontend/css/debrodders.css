@@ -1,0 +1,42 @@
+body {
+	height: 100%;
+	width: 100%;
+	background-color: black;
+	font-family: "Arial";
+}
+
+#brodders-brand {
+	margin: auto;
+	vertical-align: middle;
+    color: orange;
+    overflow: hidden;
+    white-space: nowrap;
+    text-align: center;
+    border-right: 10px solid white;
+    padding: 70px 0;
+}
+
+#brodders-data-box {
+	
+	margin: auto;
+	color: white;
+	white-space: nowrap;
+    text-align: center;
+    opacity: 0.0;
+    
+    animation-name: box;
+    animation-duration: 3s;   
+    animation-fill-mode: forwards;
+    animation-delay: 1s;
+	
+}
+
+@keyframes box {
+    from {opacity: 0.0;}
+    to {opacity: 1.0;}
+}
+
+@keyframes brand {
+    from {opacity: 0.0;}
+    to {opacity: 1.0;}
+}
