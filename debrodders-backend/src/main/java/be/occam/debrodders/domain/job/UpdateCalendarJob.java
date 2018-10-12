@@ -1,11 +1,16 @@
 package be.occam.debrodders.domain.job;
 
+import static be.occam.utils.javax.Utils.list;
 import static be.occam.utils.javax.Utils.map;
 
 import java.text.SimpleDateFormat;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
+
+import javax.annotation.Resource;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -13,6 +18,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 
+import be.occam.debrodders.domain.object.Match;
+import be.occam.utils.one.OneDotComClient;
 import be.occam.utils.spring.web.Client;
 import be.occam.utils.timing.Timing;
 import net.htmlparser.jericho.Element;
@@ -32,16 +39,63 @@ public class UpdateCalendarJob {
 	protected final SimpleDateFormat timePattern
 		= new SimpleDateFormat( "hh:mm" );
 	
+	protected final Comparator<Match> kickOffComparator 
+		= new Comparator<Match>() {
+
+			@Override
+			public int compare(Match m1, Match m2) {
+				return m1.getKickOff().compareTo( m2.getKickOff() );
+			}
+		
+			
+		};
+		
+	@Resource
+	protected OneDotComClient oneDotComClient;
+	
 	/**
 	 * Collect calendar info from the league's website, then build json file(s) and publish it to the frontend 
 	 */
 	public void collectAndUpdate() {
 		
-		this.collect();
+		List<Match> allMatches
+			= this.collect();
+		
+		List<Match> previousMatches
+			= list();
+		
+		Match matchOfToday
+			= null;
+		
+		List<Match> nextMatches
+			= list();
+		
+		Date now
+			= new Date();
+		
+		for ( Match match : allMatches ) {
+			// could be optimized, as allMatches is sorted ...
+			if ( Timing.isSameDay( match.getKickOff(), now ) ) {
+				matchOfToday = match;
+				continue;
+			}
+			else if ( match.getKickOff().before( now ) ) {
+				previousMatches.add( match );
+			}
+			else {
+				nextMatches.add( match );
+			}
+		}
+		
+		publish( matchOfTheDay, previousMatches, nextMatches );
+		
 		
 	}
 	
-	protected void collect() {
+	protected List<Match> collect() {
+		
+			List<Match> matches
+				= list();
 		
 			String url
 				= calendarURL;
@@ -107,7 +161,42 @@ public class UpdateCalendarJob {
 			
 				logger.info( "time is [{}]", timeString );
 				
+				String kickOffString
+					= new StringBuilder( dateString ).append( " " ).append( timeString ).toString();
+				
+				Date kickOff
+					= Timing.date( kickOffString, "dd-MM-yyyy hh:mm" );
+				
+				Element homeElement
+					= cells.get( 2 );
+		
+				String homeString
+					= homeElement.getTextExtractor().toString();
+		
+				logger.info( "home is [{}]", homeString );
+				
+				Element awayElement
+					= cells.get( 3 );
+	
+				String awayString
+					= awayElement.getTextExtractor().toString();
+	
+				logger.info( "away is [{}]", awayString );
+			
+				Match match
+					= new Match();
+				
+				match.setHomeTeam( homeString );
+				match.setAwayTeam( awayString );
+				match.setKickOff( kickOff );
+				
+				matches.add( match );
+				
 			}
+			
+			Collections.sort( matches, kickOffComparator );
+			
+			return matches;
 				
 	}
 	
@@ -159,6 +248,16 @@ public class UpdateCalendarJob {
 			= map();
 		
 		return headers;
+	}
+	
+	protected void publish( Match matchOfTheDay, List<Match> previousMatches, List<Match> nextMatches ) {
+		
+		// publish to match-current.json TODO
+		
+		// publish to matches-previous.json
+		
+		// publish to matches-next.json
+		
 	}
 
 }

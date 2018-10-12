@@ -19,6 +19,7 @@ public class MatchStatus {
 	protected int visitorGoals;
 	protected int minutes;
 	protected Date lastWhistle;
+	protected String announcement;
 	
 	public String getUuid() {
 		return uuid;
@@ -74,6 +75,11 @@ public class MatchStatus {
 	public void setVisitorTeam(Team visitorTeam) {
 		this.visitorTeam = visitorTeam;
 	}
-	
+	public String getAnnouncement() {
+		return announcement;
+	}
+	public void setAnnouncement(String announcement) {
+		this.announcement = announcement;
+	}
 	
 }

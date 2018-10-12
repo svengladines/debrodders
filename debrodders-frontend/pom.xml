@@ -40,7 +40,7 @@
 	    					<fromDir>${project.dir}</fromDir>
 	    					<toDir>/</toDir>
 	    					<includes>
-	    						*/*
+	    						**/*
 	    					</includes>
 	    					<url>ftp://ftp.debrodders.be</url>
 	    					<serverId>ftp-debrodders</serverId>
