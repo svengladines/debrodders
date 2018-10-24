@@ -19,6 +19,8 @@ import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 
 import be.occam.debrodders.domain.object.Match;
+import be.occam.debrodders.domain.people.Editor;
+import be.occam.debrodders.domain.people.Publisher;
 import be.occam.utils.one.OneDotComClient;
 import be.occam.utils.spring.web.Client;
 import be.occam.utils.timing.Timing;
@@ -51,7 +53,10 @@ public class UpdateCalendarJob {
 		};
 		
 	@Resource
-	protected OneDotComClient oneDotComClient;
+	protected Editor editor;
+	
+	@Resource
+	protected Publisher publisher;
 	
 	/**
 	 * Collect calendar info from the league's website, then build json file(s) and publish it to the frontend 
@@ -75,11 +80,13 @@ public class UpdateCalendarJob {
 		
 		for ( Match match : allMatches ) {
 			// could be optimized, as allMatches is sorted ...
+			/*
 			if ( Timing.isSameDay( match.getKickOff(), now ) ) {
 				matchOfToday = match;
 				continue;
 			}
-			else if ( match.getKickOff().before( now ) ) {
+			
+			else  */if ( match.getKickOff().before( now ) ) {
 				previousMatches.add( match );
 			}
 			else {
@@ -87,7 +94,7 @@ public class UpdateCalendarJob {
 			}
 		}
 		
-		publish( matchOfTheDay, previousMatches, nextMatches );
+		publish( null, previousMatches, nextMatches );
 		
 		
 	}
@@ -255,9 +262,32 @@ public class UpdateCalendarJob {
 		// publish to match-current.json TODO
 		
 		// publish to matches-previous.json
+		String previousMatchesJson
+			= this.editor.writeMatches( previousMatches );
+		
+		this.publisher.publish( "previous-matches.json", previousMatchesJson );
 		
 		// publish to matches-next.json
+		String nextMatchesJson
+			= this.editor.writeMatches( nextMatches );
 		
+		this.publisher.publish( "next-matches.json", nextMatchesJson );
 	}
 
+	public Editor getEditor() {
+		return editor;
+	}
+
+	public void setEditor(Editor editor) {
+		this.editor = editor;
+	}
+
+	public Publisher getPublisher() {
+		return publisher;
+	}
+
+	public void setPublisher(Publisher publisher) {
+		this.publisher = publisher;
+	}
+	
 }

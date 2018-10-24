@@ -12,9 +12,11 @@ import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.JavaMailSenderImpl;
 
+import be.occam.debrodders.domain.people.Editor;
 import be.occam.debrodders.domain.people.Eventualist;
 import be.occam.debrodders.domain.people.MailMan;
 import be.occam.debrodders.domain.people.MatchStatusManager;
+import be.occam.debrodders.domain.people.Publisher;
 import be.occam.debrodders.domain.service.MatchStatusService;
 import be.occam.debrodders.web.util.DataGuard;
 import be.occam.debrodders.web.util.NoopGuard;
@@ -103,6 +105,16 @@ public class DeBroddersApplicationConfig {
 		MatchStatusManager matchStatusManager() {
 			return new MatchStatusManager();
 		}
+		
+		@Bean
+		Editor editor() {
+			return new Editor();
+		}
+		
+		@Bean
+		Publisher publisher() {
+			return new Publisher();
+		}
 			
 	}
 	
@@ -127,7 +139,6 @@ public class DeBroddersApplicationConfig {
 		
 		@Bean
 		public OneDotComClient OneDotComClient( @Value("#{systemProperties.domain}") String domain, @Value("#{systemProperties.user}") String user, @Value("#{systemProperties.pw}") String pw ) {
-			// TODO, not in GITHUB!!!
 			return new OneDotComClient( domain, user, pw );
 		}
 		
