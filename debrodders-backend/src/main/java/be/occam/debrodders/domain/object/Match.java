@@ -7,6 +7,8 @@ public class Match {
 	protected Date kickOff;
 	protected String homeTeam;
 	protected String awayTeam;
+	protected int homeGoals;
+	protected int awayGoals;
 	
 	public Date getKickOff() {
 		return kickOff;
@@ -31,7 +33,21 @@ public class Match {
 	public void setAwayTeam(String awayTeam) {
 		this.awayTeam = awayTeam;
 	}
-	
-	
 
+	public int getHomeGoals() {
+		return homeGoals;
+	}
+
+	public void setHomeGoals(int homeGoals) {
+		this.homeGoals = homeGoals;
+	}
+
+	public int getAwayGoals() {
+		return awayGoals;
+	}
+
+	public void setAwayGoals(int awayGoals) {
+		this.awayGoals = awayGoals;
+	}
+	
 }

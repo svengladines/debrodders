@@ -1,0 +1,52 @@
+<html>
+<head>
+	<link href="resources/css/debrodders.css" rel="stylesheet">
+	<script src="lib/jquery/jquery-3.2.1.js"></script>
+	<script src="lib/mustache/mustache-2.3.0.js"></script>
+	<script src="lib/moment/moment.js"></script>
+	<script src="resources/js/matches.js"></script>
+</head>
+
+<body>
+
+	<script id="previousMatchTemplate" type="text/template">
+			<p>{{homeTeam}} - {{awayTeam}} : {{homeGoals}} - {{awayGoals}}</p>
+	</script>
+	
+	<script id="nextMatchTemplate" type="text/template">
+			<p>{{homeTeam}} - {{awayTeam}}: <strong>{{date}}</strong></p>
+	</script>
+
+		<div id="brodders-brand">
+			<h1>FC De Brodders</h1>
+			<p>Ploeg van 't stad</p>
+		</div>
+		
+		<div id="brodders-data-box">
+		
+			<h2>Uitslag</h2>
+			
+			<div id="previousMatch"></div>
+			
+		</div>
+		
+			<div id="brodders-data-box">
+		
+			<h2>Volgende match</h2>
+			
+			<div id="nextMatch"></div>
+			
+		</div>
+</body>
+
+<script>
+
+jQuery( document ).ready(function() {
+	
+		loadMatches();
+	
+	});
+
+</script>
+
+</html>

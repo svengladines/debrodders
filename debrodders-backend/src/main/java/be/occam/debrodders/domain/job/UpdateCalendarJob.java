@@ -1,6 +1,6 @@
 package be.occam.debrodders.domain.job;
 
-import static be.occam.utils.javax.Utils.list;
+import static be.occam.utils.javax.Utils.*;
 import static be.occam.utils.javax.Utils.map;
 
 import java.text.SimpleDateFormat;
@@ -182,6 +182,9 @@ public class UpdateCalendarJob {
 		
 				logger.info( "home is [{}]", homeString );
 				
+				Match match
+					= new Match();
+				
 				Element awayElement
 					= cells.get( 3 );
 	
@@ -189,13 +192,54 @@ public class UpdateCalendarJob {
 					= awayElement.getTextExtractor().toString();
 	
 				logger.info( "away is [{}]", awayString );
-			
-				Match match
-					= new Match();
 				
 				match.setHomeTeam( homeString );
 				match.setAwayTeam( awayString );
 				match.setKickOff( kickOff );
+				
+				Element goalsElement
+					= cells.get( 4 );
+				
+				if ( goalsElement != null ) {
+	
+					String goalsString
+						= goalsElement.getTextExtractor().toString();
+					
+					logger.info( "goalsString is [{}]", goalsString );
+					
+					if ( ! isEmpty( goalsString ) ) {
+						
+						String homeGoalsString 
+							= goalsString.substring(0, goalsString.indexOf( "-") ).trim();
+								
+						if ( ! isEmpty( homeGoalsString ) ) {
+					
+							int homeGoals 
+								= Integer.parseInt( homeGoalsString );
+		
+							logger.info( "home goals is [{}]", homeGoals );
+						
+							match.setHomeGoals( homeGoals );
+							
+						}
+						
+						String awayGoalsString 
+							= goalsString.substring( goalsString.indexOf( "-") + 1 ).trim();
+						
+						if ( ! isEmpty( awayGoalsString ) ) {
+						
+							int awayGoals 
+								= Integer.parseInt( awayGoalsString );
+							
+							logger.info( "away goals is [{}]", awayGoals );
+							
+							match.setAwayGoals( awayGoals );
+							
+						}
+						
+					}
+				
+				}
 				
 				matches.add( match );
 				
