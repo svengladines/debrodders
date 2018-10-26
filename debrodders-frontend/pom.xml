@@ -37,10 +37,10 @@
 	    					<goal>upload</goal>
 	    				</goals>
 	    				<configuration>
-	    					<fromDir>${project.dir}</fromDir>
+	    					<fromDir>src/main/html</fromDir>
 	    					<toDir>/</toDir>
 	    					<includes>
-	    						**/*
+	    						**/**
 	    					</includes>
 	    					<url>ftp://ftp.debrodders.be</url>
 	    					<serverId>ftp-debrodders</serverId>
