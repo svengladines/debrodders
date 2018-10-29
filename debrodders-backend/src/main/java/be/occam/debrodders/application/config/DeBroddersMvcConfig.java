@@ -7,12 +7,13 @@ import org.springframework.web.multipart.MultipartResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
+import be.occam.debrodders.web.controller.api.CronRequestsController;
 import be.occam.debrodders.web.controller.api.EventsController;
 import be.occam.debrodders.web.controller.api.MatchStatusesController;
 
 @Configuration
 @EnableWebMvc
-public class MvcConfig {
+public class DeBroddersMvcConfig {
 	
 	@Configuration
 	public static class DispatcherConfig {
@@ -31,6 +32,13 @@ public class MvcConfig {
 	@Configuration
 	public static class ControllerConfig {
 		
+		@Bean
+		public CronRequestsController cronRequestsController() {
+			
+			return new CronRequestsController();
+			
+		}
+		
 		/*
 		@Bean
 		public EventsController eventsController() {
@@ -38,7 +46,6 @@ public class MvcConfig {
 			return new EventsController();
 			
 		}
-		*/
 		
 		@Bean
 		public MatchStatusesController matchStatusesController() {
@@ -46,6 +53,7 @@ public class MvcConfig {
 			return new MatchStatusesController();
 			
 		}
+		*/
 		
 	}
 	

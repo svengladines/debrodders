@@ -1,13 +1,13 @@
-package be.occam.brodders.application.run;
+package be.occam.debrodders.application.run;
 
 import org.junit.Test;
 
 import be.occam.test.jtest.JTest;
 import be.occam.utils.spring.configuration.ConfigurationProfiles;
 
-public class RunMiniMaxi_Development extends JTest {
+public class RunDeBrodders_Development extends JTest {
 	
-	public RunMiniMaxi_Development() {
+	public RunDeBrodders_Development() {
 		super( "/", 8069, ConfigurationProfiles.DEV );
 		
 	}

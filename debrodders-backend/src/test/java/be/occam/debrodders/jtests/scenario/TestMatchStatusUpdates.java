@@ -1,4 +1,4 @@
-package be.occam.brodders.jtests.scenario;
+package be.occam.debrodders.jtests.scenario;
 
 import static be.occam.utils.spring.web.Client.postJSON;
 import static org.junit.Assert.*;

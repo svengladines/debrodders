@@ -19,8 +19,8 @@ import be.occam.debrodders.Event;
 import be.occam.debrodders.domain.event.EventConsumer;
 import be.occam.debrodders.domain.people.Eventualist;
 import be.occam.debrodders.domain.people.MailMan;
+import be.occam.debrodders.util.DataGuard;
 import be.occam.debrodders.web.dto.EventDTO;
-import be.occam.debrodders.web.util.DataGuard;
 
 public class EventService {
 	

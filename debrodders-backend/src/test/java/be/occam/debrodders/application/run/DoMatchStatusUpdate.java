@@ -1,7 +1,7 @@
-package be.occam.brodders.application.run;
+package be.occam.debrodders.application.run;
 
 import static be.occam.utils.spring.web.Client.postJSON;
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 import org.springframework.http.HttpStatus;

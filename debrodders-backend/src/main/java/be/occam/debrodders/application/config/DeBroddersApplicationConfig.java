@@ -12,14 +12,17 @@ import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.JavaMailSenderImpl;
 
+import be.occam.debrodders.domain.job.UpdateCalendarJob;
 import be.occam.debrodders.domain.people.Editor;
 import be.occam.debrodders.domain.people.Eventualist;
 import be.occam.debrodders.domain.people.MailMan;
 import be.occam.debrodders.domain.people.MatchStatusManager;
 import be.occam.debrodders.domain.people.Publisher;
+import be.occam.debrodders.domain.service.JobService;
 import be.occam.debrodders.domain.service.MatchStatusService;
-import be.occam.debrodders.web.util.DataGuard;
-import be.occam.debrodders.web.util.NoopGuard;
+import be.occam.debrodders.util.DataGuard;
+import be.occam.debrodders.util.DevGuard;
+import be.occam.debrodders.util.NoopGuard;
 import be.occam.utils.one.OneDotComClient;
 import be.occam.utils.spring.configuration.ConfigurationProfiles;
 
@@ -44,17 +47,10 @@ public class DeBroddersApplicationConfig {
 	
 	@Configuration
 	@Profile({ConfigurationProfiles.PRODUCTION})
-	static class DomainConfigForProduction {
+	static class UtilConfigForProduction {
 		
 		@Bean
-		DataGuard dataGuard() {
-			
-			return new NoopGuard();
-			
-		}
-		
-		@Bean
-		String acsiDigitaalEmailAddress() {
+		String supportEmailAddress() {
 			
 			return "sven.gladines@gmail.com"; 
 			
@@ -76,7 +72,6 @@ public class DeBroddersApplicationConfig {
 			return eventService;
 			
 		}
-		*/
 		@Bean
 		public MatchStatusService matchStatusService( ) {
 			
@@ -84,6 +79,14 @@ public class DeBroddersApplicationConfig {
 				= new MatchStatusService( );
 			
 			return matchStatusService;
+			
+		}
+		*/
+		
+		@Bean
+		public JobService jobService() {
+			
+			return new JobService();
 			
 		}
 	}
@@ -96,6 +99,7 @@ public class DeBroddersApplicationConfig {
 			return new MailMan();
 		}
 		
+		/*
 		@Bean
 		Eventualist eventualist() {
 			return new Eventualist();
@@ -105,6 +109,7 @@ public class DeBroddersApplicationConfig {
 		MatchStatusManager matchStatusManager() {
 			return new MatchStatusManager();
 		}
+		*/
 		
 		@Bean
 		Editor editor() {
@@ -119,14 +124,16 @@ public class DeBroddersApplicationConfig {
 	}
 	
 	@Configuration
-	public static class UtilConfigShared {
+	public static class JobConfigShared {
 		
-		@Bean
-		DataGuard dataGuard() {
-			
-			return new NoopGuard();
-			
+		@Bean UpdateCalendarJob updateCalendarJob() {
+			return new UpdateCalendarJob();
 		}
+		
+	}
+	
+	@Configuration
+	public static class UtilConfigShared {
 		
 		@Bean
 		public JavaMailSender javaMailSender () {
@@ -138,7 +145,7 @@ public class DeBroddersApplicationConfig {
 		}
 		
 		@Bean
-		public OneDotComClient OneDotComClient( @Value("#{systemProperties.domain}") String domain, @Value("#{systemProperties.user}") String user, @Value("#{systemProperties.pw}") String pw ) {
+		public OneDotComClient oneDotComClient( @Value("${one.domain}") String domain, @Value("${one.userName}") String user, @Value("${one.passWord}") String pw ) {
 			return new OneDotComClient( domain, user, pw );
 		}
 		

@@ -1,4 +1,4 @@
-package be.occam.debrodders.web.util;
+package be.occam.debrodders.util;
 
 public abstract class DataGuard {
 	

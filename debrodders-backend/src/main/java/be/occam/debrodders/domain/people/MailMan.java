@@ -11,7 +11,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.mail.javamail.JavaMailSender;
 
-import be.occam.debrodders.web.util.DataGuard;
+import be.occam.debrodders.util.DataGuard;
 
 public class MailMan {
 	

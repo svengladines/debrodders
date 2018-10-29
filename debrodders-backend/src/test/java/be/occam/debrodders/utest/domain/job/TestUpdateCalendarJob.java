@@ -1,4 +1,4 @@
-package be.occam.brodders.utest.domain.job;
+package be.occam.debrodders.utest.domain.job;
 
 import org.junit.Test;
 

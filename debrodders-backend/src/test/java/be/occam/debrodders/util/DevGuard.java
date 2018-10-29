@@ -1,9 +1,9 @@
-package be.occam.brodders.web.util;
+package be.occam.debrodders.util;
 
 import com.google.apphosting.api.ApiProxy;
 import com.google.apphosting.api.ApiProxy.Environment;
 
-import be.occam.debrodders.web.util.DataGuard;
+import be.occam.debrodders.util.DataGuard;
 
 public class DevGuard extends DataGuard {
 	

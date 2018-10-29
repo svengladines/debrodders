@@ -12,8 +12,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 import be.occam.debrodders.domain.people.MatchStatusManager;
 import be.occam.debrodders.match.MatchStatus;
+import be.occam.debrodders.util.DataGuard;
 import be.occam.debrodders.web.dto.MatchStatusDTO;
-import be.occam.debrodders.web.util.DataGuard;
 
 public class MatchStatusService {
 	
