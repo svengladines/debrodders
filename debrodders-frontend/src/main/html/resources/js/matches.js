@@ -68,7 +68,7 @@ var renderPreviousMatch = function( container, matches ) {
 var renderNextMatch = function( container, matches ) {
 	var template = $jq("#nextMatchTemplate").html();
 	var nextMatch = matches[ 0 ];
-	nextMatch.date = moment( nextMatch.kickOff ).format('l');
+	nextMatch.date = moment( nextMatch.kickOff ).format('DD/MM/YYYY (HH:mm)');
 	var html = Mustache.to_html(template, nextMatch );
 	container.html( html );
 };
