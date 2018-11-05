@@ -2,7 +2,7 @@
 <cronentries>
   <cron>
     <url>/api/cron/matches</url>
-    <description>Update previous & next matches every day</description>
-    <schedule>every day 09:00</schedule>
+    <description>Update previous and next matches every day</description>
+    <schedule>every day 19:00</schedule>
   </cron>
 </cronentries>

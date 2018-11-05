@@ -3,13 +3,10 @@ package be.occam.debrodders.application.config;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.format.datetime.DateFormatter;
-import org.springframework.web.multipart.MultipartResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
 import be.occam.debrodders.web.controller.api.CronRequestsController;
-import be.occam.debrodders.web.controller.api.EventsController;
-import be.occam.debrodders.web.controller.api.MatchStatusesController;
 
 @Configuration
 @EnableWebMvc

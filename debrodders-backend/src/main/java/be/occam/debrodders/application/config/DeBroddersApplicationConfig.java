@@ -1,6 +1,6 @@
 package be.occam.debrodders.application.config;
 
-import org.codehaus.jackson.map.ObjectMapper;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
@@ -14,15 +14,9 @@ import org.springframework.mail.javamail.JavaMailSenderImpl;
 
 import be.occam.debrodders.domain.job.UpdateCalendarJob;
 import be.occam.debrodders.domain.people.Editor;
-import be.occam.debrodders.domain.people.Eventualist;
 import be.occam.debrodders.domain.people.MailMan;
-import be.occam.debrodders.domain.people.MatchStatusManager;
 import be.occam.debrodders.domain.people.Publisher;
 import be.occam.debrodders.domain.service.JobService;
-import be.occam.debrodders.domain.service.MatchStatusService;
-import be.occam.debrodders.util.DataGuard;
-import be.occam.debrodders.util.DevGuard;
-import be.occam.debrodders.util.NoopGuard;
 import be.occam.utils.one.OneDotComClient;
 import be.occam.utils.spring.configuration.ConfigurationProfiles;
 

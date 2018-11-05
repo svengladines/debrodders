@@ -2,11 +2,12 @@ package be.occam.debrodders.domain.people;
 
 import javax.annotation.Resource;
 
-import org.codehaus.jackson.map.ObjectMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import be.occam.debrodders.SimpleEvent;
+import com.fasterxml.jackson.databind.DeserializationFeature;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 import be.occam.debrodders.domain.repository.JsonObject;
 import be.occam.debrodders.domain.repository.JsonObjectRepository;
 
@@ -23,7 +24,7 @@ public class Popper {
 	public Popper() {
 		
 		this.objectMapper = new ObjectMapper();
-		this.objectMapper.configure( org.codehaus.jackson.map.DeserializationConfig.Feature.FAIL_ON_UNKNOWN_PROPERTIES, false );
+		this.objectMapper.configure( DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false );
 		
 	} 
 	
