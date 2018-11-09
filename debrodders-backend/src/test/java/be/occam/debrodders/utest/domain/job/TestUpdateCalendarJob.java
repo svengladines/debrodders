@@ -16,10 +16,10 @@ public class TestUpdateCalendarJob {
 			= new UpdateCalendarJob();
 		
 		String userName
-			= System.getProperty( "one.userName" );
+			= System.getProperty( "brodders.one.userName" );
 		
 		String passWord
-			= System.getProperty( "one.passWord" );
+			= System.getProperty( "brodders.one.passWord" );
 		
 		OneDotComClient oneDotComClient
 			= new OneDotComClient( "debrodders.be", userName, passWord);
