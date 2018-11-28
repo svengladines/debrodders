@@ -139,7 +139,7 @@ public class DeBroddersApplicationConfig {
 		}
 		
 		@Bean
-		public OneDotComClient oneDotComClient( @Value("${one.domain}") String domain, @Value("${one.userName}") String user, @Value("${one.passWord}") String pw ) {
+		public OneDotComClient oneDotComClient( @Value("${brodders.one.domain}") String domain, @Value("${brodders.one.userName}") String user, @Value("${brodders.one.passWord}") String pw ) {
 			return new OneDotComClient( domain, user, pw );
 		}
 		

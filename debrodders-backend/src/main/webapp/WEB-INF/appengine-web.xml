@@ -1,11 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <appengine-web-app xmlns="http://appengine.google.com/ns/1.0">
-  <application>minimaxi-backend</application>
+  <application>debrodders-backend</application>
   <version>1</version>
   <threadsafe>true</threadsafe>
+  <runtime>java8</runtime>
   <system-properties>
   	<property name="spring.profiles.active" value="production" />
   	<property name="ftp.user" value="debrodders.be" />
   	<property name="ftp.password" value="debrodders2230" />
+  	<property name="brodders.one.domain" value="debrodders.be" />
+  	<property name="brodders.one.userName" value="sven.gladines@telenet.be" />
+  	<property name="brodders.one.passWord" value="br0dders.18" />
   </system-properties>
 </appengine-web-app>

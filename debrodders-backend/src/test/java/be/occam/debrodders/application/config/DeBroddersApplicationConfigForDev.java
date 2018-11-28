@@ -19,11 +19,6 @@ import be.occam.utils.spring.configuration.ConfigurationProfiles;
 @Configuration
 public class DeBroddersApplicationConfigForDev {
 	
-	/*
-	final static String JPA_PKG 
-		= "be.occam.debrodders.domain.repository";
-	*/
-
 	@Configuration
 	@Profile({ConfigurationProfiles.DEV})
 	static class UtilConfigForDev {
@@ -33,55 +28,6 @@ public class DeBroddersApplicationConfigForDev {
 			
 			return "sven.gladines@gmail.com"; 
 			
-		}
-		
-	}
-	
-	@Configuration
-	// @EnableJpaRepositories( JPA_PKG )
-	@Profile( { ConfigurationProfiles.DEV } )
-	static class EntityManagerConfigForDev {
-		
-		@Bean
-		public LocalContainerEntityManagerFactoryBean localContainerEntityManagerFactoryBean(PersistenceProvider persistenceProvider, LocalServiceTestHelper dataStoreHelper ) {
-			
-			LocalContainerEntityManagerFactoryBean factory = new LocalContainerEntityManagerFactoryBean();
-			// factory.setPackagesToScan( JPA_PKG );
-			factory.setPersistenceProvider( persistenceProvider );
-			// factory.setDataSource(jpaDataSource);
-			factory.setPersistenceUnitName("debrodders-jpa-dev-test");
-			factory.getJpaPropertyMap().put( "datanucleus.jpa.addClassTransformer", "false" );
-			factory.getJpaPropertyMap().put( "datanucleus.appengine.datastoreEnableXGTransactions", "true" );
-			factory.getJpaPropertyMap().put( "datanucleus.metadata.allowXML", "false" );
-			factory.afterPropertiesSet();
-			return factory;
-		}
-		
-		@Bean
-		PersistenceProvider persistenceProvider() {
-			
-			PersistenceProviderImpl provider
-				= new PersistenceProviderImpl();
-			
-			return provider;
-			
-		}
-
-		@Bean
-		public EntityManagerFactory entityManagerFactory(LocalContainerEntityManagerFactoryBean factory) {
-			return factory.getObject();
-		}
-
-		@Bean
-		public PersistenceExceptionTranslationPostProcessor exceptionTranslation() {
-			return new PersistenceExceptionTranslationPostProcessor();
-		}
-
-		@Bean
-		public PlatformTransactionManager transactionManager(EntityManagerFactory entityManagerFactory) {
-			JpaTransactionManager transactionManager = new JpaTransactionManager();
-			transactionManager.setEntityManagerFactory(entityManagerFactory);
-			return transactionManager;
 		}
 		
 	}
