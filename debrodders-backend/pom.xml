@@ -102,6 +102,15 @@
 					<useManifestOnlyJar>false</useManifestOnlyJar>
 				</configuration>
 			</plugin>
+			 <plugin>
+            	<groupId>com.google.cloud.tools</groupId>
+            	<artifactId>appengine-maven-plugin</artifactId>
+            	<version>2.0.0</version>
+            	<configuration>
+                	<projectId>debrodders-backend</projectId>
+                	<version>1</version>
+            	</configuration>
+        </plugin>
 		</plugins>
 	</build>
 

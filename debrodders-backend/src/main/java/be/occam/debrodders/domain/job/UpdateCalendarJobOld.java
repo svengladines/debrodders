@@ -27,15 +27,13 @@ import be.occam.utils.timing.Timing;
 import net.htmlparser.jericho.Element;
 import net.htmlparser.jericho.Source;
 
-/* https://datalake-prod2018.rbfa.be/graphql?operationName=GetTeamCalendar&variables=%7B%22teamId%22%3A%22158437%22%2C%22language%22%3A%22nl%22%2C%22sortByDate%22%3A%22asc%22%7D&extensions=%7B%22persistedQuery%22%3A%7B%22version%22%3A1%2C%22sha256Hash%22%3A%22bf4be0c185dee11a27079e529a04d41dc692389ada678dac1f2280e056de7b7d%22%7D%7D */
-
-public class UpdateCalendarJob {
+public class UpdateCalendarJobOld {
 	
 	protected final Logger logger 
 		= LoggerFactory.getLogger( this.getClass() );
 	
 	protected final String calendarURL
-		= "https://datalake-prod2018.rbfa.be/graphql?operationName=GetTeamCalendar&variables=%7B%22teamId%22%3A%22158437%22%2C%22language%22%3A%22nl%22%2C%22sortByDate%22%3A%22asc%22%7D&extensions=%7B%22persistedQuery%22%3A%7B%22version%22%3A1%2C%22sha256Hash%22%3A%22bf4be0c185dee11a27079e529a04d41dc692389ada678dac1f2280e056de7b7d%22%7D%7D";
+		= "https://extranet.e-kickoff.com/kbvb_publiek/kalender.do";
 	
 	protected final SimpleDateFormat datePattern
 		= new SimpleDateFormat("dd-MM-yyyy");
@@ -61,7 +59,7 @@ public class UpdateCalendarJob {
 	protected Publisher publisher;
 	
 	/**
-	 * Collect match info from the league's website, then build json file(s) and publish it to the frontend 
+	 * Collect calendar info from the league's website, then build json file(s) and publish it to the frontend 
 	 */
 	public void collectAndUpdate() {
 		
@@ -108,14 +106,18 @@ public class UpdateCalendarJob {
 		
 			String url
 				= calendarURL;
-
+			
+			MultiValueMap<String, Object> fields
+				= this.postFormFields();
+			
 			Map<String,String> headers
-				= this.getHeaders();
+				= this.postHeaders();
 
 			ResponseEntity<String> htmlResponse
 				= Client.postFormUrlEncoded(
 						url,
 						String.class,
+						fields,
 						headers);
 			
 			String html	
@@ -249,7 +251,46 @@ public class UpdateCalendarJob {
 				
 	}
 	
-	protected Map<String,String> getHeaders() {
+	protected MultiValueMap<String, Object> postFormFields() {
+		
+		/**
+		 * selectedSerPlus_id: PCC82943
+			wat: data
+			KBVB_datumvan_dag: 01
+			KBVB_datumvan_maand: 09
+			KBVB_datumvan_jaar: 2018
+			KBVB_datumtot_dag: 31
+			KBVB_datumtot_maand: 05
+			KBVB_datumtot_jaar: 2019
+			enkel: test
+			LANG: N
+			secid: 7394
+			useCssNewFootbel: hosted-pages
+			matricule: 41178
+			command: Bekijken
+		 */
+		 MultiValueMap<String, Object> fields
+	    	= new LinkedMultiValueMap<String,Object>();
+		
+		fields.add( "selectedSerPlus_id", "PCC82943" );
+		fields.add( "wat", "data" );
+		fields.add( "KBVB_datumvan_dag", "01" );
+		fields.add( "KBVB_datumvan_maand", "09" );
+		fields.add( "KBVB_datumvan_jaar", "2018" );
+		fields.add( "KBVB_datumtot_dag", "31" );
+		fields.add( "KBVB_datumtot_maand", "05" );
+		fields.add( "KBVB_datumtot_jaar", "2019" );
+		fields.add( "enkel", "test" );
+		fields.add( "LANG", "N" );
+		fields.add( "secid", "7394" );
+		fields.add( "useCssNewFootbel", "hosted-pages" );
+		fields.add( "matricule", "41178" );
+		fields.add( "command", "Bekijken" );
+		
+		return fields;
+	}
+	
+	protected Map<String,String> postHeaders() {
 		
 		/**
 		 *
